@@ -13,13 +13,7 @@ public class BoardScript : MonoBehaviour
     [SerializeField]
     private int ySpaces = 0;
 
-    //i think i only needed this for testing, can probably get rid of this later
-    [SerializeField]
-    private Camera camera;
-
     private GameObject square; //gridsquare
-
-    private BoxCollider2D col; //board collider. may not need
 
     private Vector2[,] points; //all of the grid points
 
@@ -39,10 +33,6 @@ public class BoardScript : MonoBehaviour
                 Instantiate(square, new Vector3(points[i, n].x, points[i, n].y, 0), Quaternion.identity).transform.parent = transform; //draw a grid square around the point and set the parent to the board
             }
         }
-
-        //set the boxes collider to the right size. needed this for testing, but we may not actually need the board to have a collider
-        col = gameObject.GetComponent<BoxCollider2D>();
-        col.size = new Vector2(xSpaces, ySpaces);
     }
 
     //get the nearest point on the grid to a given point. will use for snapping pieces to grid
@@ -66,13 +56,5 @@ public class BoardScript : MonoBehaviour
         }
 
         return closest;
-    }
-
-
-    //used for testing if nearestpoint worked
-    void OnMouseDown()
-    {
-        Debug.Log(NearestPoint(camera.ScreenToWorldPoint(Input.mousePosition)));
-        Debug.Log(camera.ScreenToWorldPoint(Input.mousePosition));
     }
 }
