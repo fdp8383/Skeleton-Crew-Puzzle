@@ -11,9 +11,6 @@ public class DragAndDrop : MonoBehaviour
 
     void Update()
     {
-<<<<<<< Updated upstream
-
-=======
         if (held == true)
         {
             Vector3 mousePos;
@@ -22,7 +19,6 @@ public class DragAndDrop : MonoBehaviour
 
             this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
         }
->>>>>>> Stashed changes
     }
 
     private void OnMouseDown()
@@ -42,11 +38,7 @@ public class DragAndDrop : MonoBehaviour
 
     private void OnMouseUp()
     {
-<<<<<<< Updated upstream
-
-=======
         held = false;
->>>>>>> Stashed changes
     }
 }
 
