@@ -12,8 +12,6 @@ public class BoardScript : MonoBehaviour
     [SerializeField]
     private int ySpaces = 0;
 
-    private int layermask = 1 << 8;
-
     private GameObject square; //gridsquare
 
     private Vector2[,] points; //all of the grid points
