@@ -25,7 +25,17 @@ public class DragAndDrop : MonoBehaviour
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
             //this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
-            this.gameObject.transform.localPosition = mousePos - startPos;
+            this.gameObject.transform.localPosition = mousePos;
+        }
+
+        if (held && Input.GetKeyDown("q"))
+        {
+            transform.Rotate(0, 0, -90);
+        }
+
+        if (held && Input.GetKeyDown("e"))
+        {
+            transform.Rotate(0, 0, 90);
         }
     }
 
@@ -46,6 +56,8 @@ public class DragAndDrop : MonoBehaviour
             startPosY = mousePos.y - this.transform.localPosition.y;
         }
     }
+
+
 
     private void OnMouseUp()
     {
