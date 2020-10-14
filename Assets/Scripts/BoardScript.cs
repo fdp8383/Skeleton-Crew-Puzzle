@@ -21,6 +21,8 @@ public class BoardScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EventManager.EventName += NearestPoint;
+
         //load the grid square
         square = Resources.Load<GameObject>("gridSquare");
 
@@ -76,7 +78,6 @@ public class BoardScript : MonoBehaviour
                 }
             }
         }
-
         return closest;
     }
 
