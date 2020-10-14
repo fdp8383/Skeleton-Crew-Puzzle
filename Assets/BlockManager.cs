@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class BlockManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        foreach(var button in  GetComponentsInChildren<Block>())
+        {
+            button.OnButtonClicked += ButtonOnOnButtonClicked;
+        }
         
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void ButtonOnOnButtonClicked(int buttonNumber)
     {
-        
+        Debug.Log(message: $"Button {buttonNumber} clicked! ");
     }
 }

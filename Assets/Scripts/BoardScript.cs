@@ -43,11 +43,12 @@ public class BoardScript : MonoBehaviour
         pieces[8] = GameObject.Find("FlippedHammerBlock");
         pieces[9] = GameObject.Find("FlippedLBlock");
 
+        /* not working
         foreach(GameObject gameObj in pieces)
         {
             gameObj.SetActive(false);
         }
-
+        */
         level = 1;
         GenerateBoard(10, 10);
     }
