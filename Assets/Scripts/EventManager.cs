@@ -6,23 +6,11 @@ using UnityEngine.UIElements;
 
 public class EventManager : MonoBehaviour
 {
-    public delegate Vector2 DelegateName(Vector2 initial);
-    public static event DelegateName EventName;
+    public delegate Vector2 PositionDelegate(Vector2 initial);
+    public static event PositionDelegate getPosition;
 
-    // Start is called before the first frame update
-    void Start()
+    public static Vector2 GetPosition(Vector2 initial)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public static Vector2 CallEvent(Vector2 initial)
-    {
-        return EventName(initial);
+        return getPosition(initial);
     }
 }
