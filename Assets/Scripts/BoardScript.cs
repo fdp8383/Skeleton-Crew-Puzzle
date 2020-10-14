@@ -17,8 +17,8 @@ public class BoardScript : MonoBehaviour
 
     public GameObject[] pieces; //all of the pieces
 
-    private int xSpaces;
-    private int ySpaces;
+    public int xSpaces;
+    public int ySpaces;
 
     public int Level { get; } = 0;
 
@@ -29,8 +29,6 @@ public class BoardScript : MonoBehaviour
 
         //load the grid square
         square = Resources.Load<GameObject>("gridSquare");
-
-        
 
         //initialize and add the pieces to the pieces array
         pieces = new GameObject[10];
