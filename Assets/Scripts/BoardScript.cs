@@ -2,21 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.WebSockets;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class BoardScript : MonoBehaviour
 {
-    //dimensions of board
-    [SerializeField]
-    private int xSpaces = 0;
-    [SerializeField]
-    private int ySpaces = 0;
+
+    //level number
+    private int level = 0;
 
     private GameObject square; //gridsquare
 
     private Vector2[,] points; //all of the grid points
 
     public GameObject[] pieces; //all of the pieces
+
+    private int xSpaces;
+    private int ySpaces;
+
+    public int Level { get; } = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -26,16 +30,7 @@ public class BoardScript : MonoBehaviour
         //load the grid square
         square = Resources.Load<GameObject>("gridSquare");
 
-        //generate points
-        points = new Vector2[xSpaces, ySpaces];
-        for(int i=0; i < xSpaces; i++)
-        {
-            for (int n = 0; n < ySpaces; n++)
-            {
-                points[i,n] = new Vector2(i - (xSpaces - 1) / 2f, n - (ySpaces - 1) / 2f); //create a point
-                Instantiate(square, new Vector3(points[i, n].x, points[i, n].y, 0), Quaternion.identity).transform.parent = transform; //draw a grid square around the point and set the parent to the board
-            }
-        }
+        
 
         //initialize and add the pieces to the pieces array
         pieces = new GameObject[10];
@@ -49,6 +44,14 @@ public class BoardScript : MonoBehaviour
         pieces[7] = GameObject.Find("SmallLBlock");
         pieces[8] = GameObject.Find("FlippedHammerBlock");
         pieces[9] = GameObject.Find("FlippedLBlock");
+
+        foreach(GameObject gameObj in pieces)
+        {
+            gameObj.SetActive(false);
+        }
+
+        level = 1;
+        GenerateBoard(10, 10);
     }
 
     void Update()
@@ -101,5 +104,21 @@ public class BoardScript : MonoBehaviour
         }
         //if the function makes it here without returning false, the board is filled
         return true;
+    }
+
+    private void GenerateBoard(int x, int y)
+    {
+        xSpaces = x;
+        ySpaces = y;
+        //generate points
+        points = new Vector2[xSpaces, ySpaces];
+        for (int i = 0; i < xSpaces; i++)
+        {
+            for (int n = 0; n < ySpaces; n++)
+            {
+                points[i, n] = new Vector2(i - (xSpaces - 1) / 2f, n - (ySpaces - 1) / 2f); //create a point
+                Instantiate(square, new Vector3(points[i, n].x, points[i, n].y, 0), Quaternion.identity).transform.parent = transform; //draw a grid square around the point and set the parent to the board
+            }
+        }
     }
 }
