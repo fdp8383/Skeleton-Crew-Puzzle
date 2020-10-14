@@ -49,6 +49,14 @@ public class BoardScript : MonoBehaviour
         pieces[9] = GameObject.Find("FlippedLBlock");
     }
 
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log(Filled());
+        }
+    }
+
     //get the nearest point on the grid to a given point. will use for snapping pieces to grid
     public Vector2 NearestPoint(Vector2 initial)
     {
@@ -70,5 +78,27 @@ public class BoardScript : MonoBehaviour
         }
 
         return closest;
+    }
+
+    //check if the board is filled
+    public bool Filled()
+    {
+        bool hit = false;
+        //go through each space
+        for (int i = 0; i < xSpaces; i++)
+        {
+            for (int n = 0; n < ySpaces; n++)
+            {
+                hit = Physics2D.Raycast(points[i, n], Vector2.up, 0.1f);
+                Debug.Log("Hit: " + hit);
+                if (!hit)//check if there is an empty space. if so return false
+                {
+                    return false;
+                }
+                hit = false;
+            }
+        }
+        //if the function makes it here without returning false, the board is filled
+        return true;
     }
 }
