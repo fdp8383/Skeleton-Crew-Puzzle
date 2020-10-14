@@ -56,7 +56,7 @@ public class DragAndDrop : MonoBehaviour
     private void SnapPosition()
     {
         Vector2 pos = transform.position;
-        pos = EventManager.CallEvent(pos);
+        pos = EventManager.GetPosition(pos);
         transform.position = pos;
     }
 }
