@@ -47,15 +47,16 @@ public class BoardScript : MonoBehaviour
         GenerateBoard(5, 5);
         for(int i = 0; i < pieces.Length; i++)
         {
-            Instantiate(pieces[i], new Vector3(i, i, 0), Quaternion.identity).transform.parent = transform;
+            Instantiate(pieces[i], new Vector3(i, i, 0), Quaternion.identity);
         }
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if(Filled())
         {
-            Debug.Log(Filled());
+            Debug.Log(message: $"filled");
+            Application.Quit();
         }
     }
 
