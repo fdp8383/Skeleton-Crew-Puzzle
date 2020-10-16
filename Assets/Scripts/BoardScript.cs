@@ -35,7 +35,6 @@ public class BoardScript : MonoBehaviour
             Resources.Load<GameObject>("AxeBlock"),
             Resources.Load<GameObject>("CrossBlock"),
             Resources.Load<GameObject>("FlippedHammerBlock"),
-            Resources.Load<GameObject>("FlippedLBlock"),
             Resources.Load<GameObject>("SmallLBlock"),
             Resources.Load<GameObject>("SquareBlock"),
             Resources.Load<GameObject>("StraightBlock"),
@@ -45,8 +44,8 @@ public class BoardScript : MonoBehaviour
         };
 
         level = 1;
-        GenerateBoard(10, 10);
-        for(int i = 0; i < 10; i++)
+        GenerateBoard(5, 5);
+        for(int i = 0; i < pieces.Length; i++)
         {
             Instantiate(pieces[i], new Vector3(i, i, 0), Quaternion.identity).transform.parent = transform;
         }
