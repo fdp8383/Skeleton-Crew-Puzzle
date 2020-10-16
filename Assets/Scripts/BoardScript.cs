@@ -12,9 +12,7 @@ public class BoardScript : MonoBehaviour
     private int level = 0;
 
     private GameObject square; //gridsquare
-
     public GameObject[] pieces; //all of the pieces
-
     private Vector2[,] points; //all of the grid points
 
     public int xSpaces;
@@ -30,6 +28,7 @@ public class BoardScript : MonoBehaviour
         //load the grid square
         square = Resources.Load<GameObject>("gridSquare");
 
+        //add all the pieces to the array
         pieces = new GameObject[]
         {
             Resources.Load<GameObject>("AxeBlock"),
@@ -43,6 +42,7 @@ public class BoardScript : MonoBehaviour
             Resources.Load<GameObject>("ZigZagBlock")
         };
 
+        //add the board and pieces to the scene
         level = 1;
         GenerateBoard(5, 5);
         for(int i = 0; i < pieces.Length; i++)
