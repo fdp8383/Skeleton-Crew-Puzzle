@@ -11,6 +11,8 @@ public class DragAndDrop : MonoBehaviour
     private Vector2 startPos;
     private bool held = false;
 
+    public bool InBoard { get; set; }
+
     private void Start()
     {
         startPos = new Vector2();
@@ -20,11 +22,8 @@ public class DragAndDrop : MonoBehaviour
     {
         if (held == true)
         {
-            Vector2 mousePos;
-            mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            //this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
             this.gameObject.transform.localPosition = mousePos;
         }
 
@@ -43,17 +42,14 @@ public class DragAndDrop : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector2 mousePos;
-            mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            Debug.Log("click");
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             held = true;
 
 
             Vector2 v2position = this.transform.localPosition;
             startPos = mousePos - v2position;
-            startPosX = mousePos.x - this.transform.localPosition.x;
-            startPosY = mousePos.y - this.transform.localPosition.y;
         }
     }
 
@@ -67,9 +63,13 @@ public class DragAndDrop : MonoBehaviour
 
     private void SnapPosition()
     {
-        Vector2 pos = transform.position;
-        pos = EventManager.GetPosition(pos);
-        transform.position = pos;
+        Debug.Log("touching board? "+InBoard);
+        if (InBoard)
+        {
+            Vector2 pos = transform.position;
+            pos = EventManager.GetPosition(pos);
+            transform.position = pos;
+        }
     }
 }
 
