@@ -10,6 +10,7 @@ public class Block : MonoBehaviour
     [SerializeField] private TMP_Text _text;
 
     public event Action<int> OnButtonClicked;
+    public GameObject[] pieces; //all of the pieces
 
     private KeyCode _keyCode;
     private int _keyNumber;
@@ -28,6 +29,10 @@ public class Block : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(HandleClick);
     }
 
+    void Start()
+    {
+
+    }
     private void HandleClick()
     {
         OnButtonClicked?.Invoke(_keyNumber);

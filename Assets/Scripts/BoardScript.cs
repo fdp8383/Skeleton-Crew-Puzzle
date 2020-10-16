@@ -16,7 +16,6 @@ public class BoardScript : MonoBehaviour
     private BoxCollider2D BoardCollider; //boards collider
 
     public GameObject[] pieces; //all of the pieces
-
     private Vector2[,] points; //all of the grid points
 
     public int xSpaces;
@@ -35,12 +34,12 @@ public class BoardScript : MonoBehaviour
         //load the grid square
         square = Resources.Load<GameObject>("gridSquare");
 
+        //add all the pieces to the array
         pieces = new GameObject[]
         {
             Resources.Load<GameObject>("AxeBlock"),
             Resources.Load<GameObject>("CrossBlock"),
             Resources.Load<GameObject>("FlippedHammerBlock"),
-            Resources.Load<GameObject>("FlippedLBlock"),
             Resources.Load<GameObject>("SmallLBlock"),
             Resources.Load<GameObject>("SquareBlock"),
             Resources.Load<GameObject>("StraightBlock"),
@@ -49,9 +48,10 @@ public class BoardScript : MonoBehaviour
             Resources.Load<GameObject>("ZigZagBlock")
         };
 
+        //add the board and pieces to the scene
         level = 1;
         GenerateBoard(5, 5);
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < pieces.Length; i++)
         {
             Instantiate(pieces[i], new Vector3(i, i, 0), Quaternion.identity);
         }
@@ -59,9 +59,10 @@ public class BoardScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if(Filled())
         {
-            Debug.Log(Filled());
+            Debug.Log(message: $"filled");
+            Application.Quit();
         }
     }
 
