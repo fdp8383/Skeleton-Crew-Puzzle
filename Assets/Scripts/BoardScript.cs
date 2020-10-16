@@ -13,9 +13,9 @@ public class BoardScript : MonoBehaviour
 
     private GameObject square; //gridsquare
 
-    private Vector2[,] points; //all of the grid points
-
     public GameObject[] pieces; //all of the pieces
+
+    private Vector2[,] points; //all of the grid points
 
     public int xSpaces;
     public int ySpaces;
@@ -30,27 +30,26 @@ public class BoardScript : MonoBehaviour
         //load the grid square
         square = Resources.Load<GameObject>("gridSquare");
 
-        //initialize and add the pieces to the pieces array
-        pieces = new GameObject[10];
-        pieces[0] = GameObject.Find("SquareBlock");
-        pieces[1] = GameObject.Find("UBlock");
-        pieces[2] = GameObject.Find("ZigZagBlock");
-        pieces[3] = GameObject.Find("CrossBlock");
-        pieces[4] = GameObject.Find("ZBlock");
-        pieces[5] = GameObject.Find("StraightBlock");
-        pieces[6] = GameObject.Find("AxeBlock");
-        pieces[7] = GameObject.Find("SmallLBlock");
-        pieces[8] = GameObject.Find("FlippedHammerBlock");
-        pieces[9] = GameObject.Find("FlippedLBlock");
-
-        /* not working
-        foreach(GameObject gameObj in pieces)
+        pieces = new GameObject[]
         {
-            gameObj.SetActive(false);
-        }
-        */
+            Resources.Load<GameObject>("AxeBlock"),
+            Resources.Load<GameObject>("CrossBlock"),
+            Resources.Load<GameObject>("FlippedHammerBlock"),
+            Resources.Load<GameObject>("FlippedLBlock"),
+            Resources.Load<GameObject>("SmallLBlock"),
+            Resources.Load<GameObject>("SquareBlock"),
+            Resources.Load<GameObject>("StraightBlock"),
+            Resources.Load<GameObject>("UBlock"),
+            Resources.Load<GameObject>("ZBlock"),
+            Resources.Load<GameObject>("ZigZagBlock")
+        };
+
         level = 1;
         GenerateBoard(10, 10);
+        for(int i = 0; i < 10; i++)
+        {
+            Instantiate(pieces[i], new Vector3(i, i, 0), Quaternion.identity).transform.parent = transform;
+        }
     }
 
     void Update()
