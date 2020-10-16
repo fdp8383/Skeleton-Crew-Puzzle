@@ -13,6 +13,8 @@ public class BoardScript : MonoBehaviour
 
     private GameObject square; //gridsquare
 
+    private BoxCollider2D BoardCollider; //boards collider
+
     public GameObject[] pieces; //all of the pieces
 
     private Vector2[,] points; //all of the grid points
@@ -26,6 +28,9 @@ public class BoardScript : MonoBehaviour
     void Start()
     {
         EventManager.getPosition += NearestPoint;
+        EventManager.boardCheck += Filled;
+
+        BoardCollider = gameObject.GetComponent<BoxCollider2D>();
 
         //load the grid square
         square = Resources.Load<GameObject>("gridSquare");
@@ -45,10 +50,10 @@ public class BoardScript : MonoBehaviour
         };
 
         level = 1;
-        GenerateBoard(10, 10);
+        GenerateBoard(5, 5);
         for(int i = 0; i < 10; i++)
         {
-            Instantiate(pieces[i], new Vector3(i, i, 0), Quaternion.identity).transform.parent = transform;
+            Instantiate(pieces[i], new Vector3(i, i, 0), Quaternion.identity);
         }
     }
 
@@ -95,12 +100,14 @@ public class BoardScript : MonoBehaviour
                 Debug.Log("Hit: " + hit);
                 if (!hit)//check if there is an empty space. if so return false
                 {
+                    Debug.Log(false);
                     return false;
                 }
                 hit = false;
             }
         }
         //if the function makes it here without returning false, the board is filled
+        Debug.Log(true);
         return true;
     }
 
@@ -108,6 +115,10 @@ public class BoardScript : MonoBehaviour
     {
         xSpaces = x;
         ySpaces = y;
+
+        //set collider to the right size
+        BoardCollider.size = new Vector2(xSpaces, ySpaces);
+
         //generate points
         points = new Vector2[xSpaces, ySpaces];
         for (int i = 0; i < xSpaces; i++)
@@ -118,5 +129,19 @@ public class BoardScript : MonoBehaviour
                 Instantiate(square, new Vector3(points[i, n].x, points[i, n].y, 0), Quaternion.identity).transform.parent = transform; //draw a grid square around the point and set the parent to the board
             }
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        DragAndDrop piece = other.GetComponent<DragAndDrop>();
+        if (piece)
+            piece.InBoard = true;
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        DragAndDrop piece = other.GetComponent<DragAndDrop>();
+        if (piece)
+            piece.InBoard = false;
     }
 }
