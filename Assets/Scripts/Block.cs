@@ -14,12 +14,9 @@ public class Block : MonoBehaviour
 
     private KeyCode _keyCode; //used for keyboard input, I HAVE NOT IMPLEMENTED THIS, but I can should we want this functionality
     private int _keyNumber; //the current NUM of the hotbar
-    
+
     private void OnValidate()
     {
-        //don't really know what this does but it was throwing an error and i couldn't figure out how to fix it.
-        //code seems to work fine without it but i'm still keeping it here
-
         _keyNumber = transform.GetSiblingIndex() + 1;
         _keyCode = KeyCode.Alpha0 + _keyNumber;
         //if (_text == null)

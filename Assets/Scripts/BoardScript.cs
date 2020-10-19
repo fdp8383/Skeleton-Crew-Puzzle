@@ -7,13 +7,13 @@ using UnityEngine;
 
 public class BoardScript : MonoBehaviour
 {
-
     //level number
     private int level = 0;
 
     private GameObject square; //gridsquare
 
     public GameObject[] pieces; //all of the pieces
+    public bool[] activePieces;
 
     private Vector2[,] points; //all of the grid points
 
@@ -21,6 +21,22 @@ public class BoardScript : MonoBehaviour
     public int ySpaces;
 
     public int Level { get; } = 0;
+
+    private void Awake()
+    {
+        activePieces = new bool[24];
+        //load the grid square
+        square = Resources.Load<GameObject>("GridSquare");
+
+        pieces = new GameObject[24];
+        //add all the pieces to the array
+        for (int i = 0; i < 24; i++)
+        {
+            pieces[i] = Resources.Load<GameObject>("Block" + i.ToString());
+            activePieces[i] = false;
+        }
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -35,16 +51,6 @@ public class BoardScript : MonoBehaviour
         ySpaces = 5;
         points = new Vector2[xSpaces, ySpaces];
 
-
-        //load the grid square
-        square = Resources.Load<GameObject>("GridSquare");
-
-        pieces = new GameObject[24];
-        //add all the pieces to the array
-        for(int i = 0; i < 24; i++)
-        {
-            pieces[i] = Resources.Load<GameObject>("Block" + i.ToString());
-        }
 
         //add the board and pieces to the scene
         level = 1;
