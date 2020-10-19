@@ -17,12 +17,15 @@ public class Block : MonoBehaviour
     
     private void OnValidate()
     {
-        _keyNumber = transform.GetSiblingIndex() + 1;
-        _keyCode = KeyCode.Alpha0 + _keyNumber;
-        if (_text == null)
-            _text = GetComponentInChildren<TMP_Text>();
-        _text.SetText(_keyNumber.ToString());
-        gameObject.name = "Hotbar Button " + _keyNumber;
+        //don't really know what this does but it was throwing an error and i couldn't figure out how to fix it.
+        //code seems to work fine without it but i'm still keeping it here
+
+        //_keyNumber = transform.GetSiblingIndex() + 1;
+        //_keyCode = KeyCode.Alpha0 + _keyNumber;
+        //if (_text == null)
+        //    _text = GetComponentInChildren<TMP_Text>();
+        //_text.SetText(_keyNumber.ToString());
+        //gameObject.name = "Hotbar Button " + _keyNumber;
     }
     private void Awake()
     {
