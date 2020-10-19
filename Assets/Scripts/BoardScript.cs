@@ -13,12 +13,8 @@ public class BoardScript : MonoBehaviour
 
     private GameObject square; //gridsquare
 
-<<<<<<< HEAD
     public GameObject[] pieces; //all of the pieces
-=======
-    private BoxCollider2D BoardCollider; //boards collider
 
->>>>>>> 362999343d504fc27bb2f74b880690dabcd7dd60
     private Vector2[,] points; //all of the grid points
 
     public int xSpaces;
@@ -29,26 +25,41 @@ public class BoardScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
         //setting up events for pieces to use
         //pieces can find the nearest board point to snap to
         EventManager.getPosition += NearestPoint;
         //board will check if it is filled when you place a piece
         EventManager.boardCheck += Filled;
-=======
+
         xSpaces = 5;
         ySpaces = 5;
         points = new Vector2[xSpaces, ySpaces];
->>>>>>> 362999343d504fc27bb2f74b880690dabcd7dd60
+
 
         //load the grid square
         square = Resources.Load<GameObject>("GridSquare");
 
+        //add all the pieces to the array
+        pieces = new GameObject[]
+        {
+            Resources.Load<GameObject>("AxeBlock"),
+            Resources.Load<GameObject>("CrossBlock"),
+            Resources.Load<GameObject>("FlippedHammerBlock"),
+            Resources.Load<GameObject>("SmallLBlock"),
+            Resources.Load<GameObject>("SquareBlock"),
+            Resources.Load<GameObject>("StraightBlock"),
+            Resources.Load<GameObject>("UBlock"),
+            Resources.Load<GameObject>("ZBlock"),
+            Resources.Load<GameObject>("ZigZagBlock")
+        };
+
         //add the board and pieces to the scene
         level = 1;
         GenerateBoard(xSpaces, ySpaces);
-        EventManager.getPosition += NearestPoint;
-        EventManager.boardCheck += Filled;
+        for(int i = 0; i < pieces.Length; i++)
+        {
+            Instantiate(pieces[i], new Vector3(i, i, 0), Quaternion.identity);
+        }
     }
 
     void Update()
