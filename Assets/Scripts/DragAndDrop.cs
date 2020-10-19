@@ -22,6 +22,7 @@ public class DragAndDrop : MonoBehaviour
     {
         if (held == true)
         {
+            Debug.Log(message: $"Piece held! ");
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             this.gameObject.transform.localPosition = mousePos;
@@ -63,11 +64,11 @@ public class DragAndDrop : MonoBehaviour
 
     private void SnapPosition()
     {
-        Debug.Log("touching board? "+InBoard);
-        if (InBoard)
+        Vector2 pos = transform.position;
+        pos = EventManager.GetPosition(pos);
+
+        if (Vector2.Distance(transform.position, pos) < 1)
         {
-            Vector2 pos = transform.position;
-            pos = EventManager.GetPosition(pos);
             transform.position = pos;
         }
     }
