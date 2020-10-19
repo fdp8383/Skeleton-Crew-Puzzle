@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEditor.VersionControl;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BlockManager : MonoBehaviour
 {
     public GameObject[] pieces; //all of the pieces
+<<<<<<< HEAD
     public GameObject[] buttons;
 
     private void Awake()
@@ -25,12 +25,32 @@ public class BlockManager : MonoBehaviour
         {
             
             //Instantiate(buttons[i], new Vector3(-5 + i * 2.5f, -5, 0), Quaternion.identity);
+=======
+
+    private void Awake()
+    {
+        foreach(var button in  GetComponentsInChildren<Block>())
+        {
+            button.OnButtonClicked += ButtonOnOnButtonClicked;
+>>>>>>> parent of 08b9aea... board spawns in properly
         }
+        
     }
 
     void Start()
     {
-        
+        pieces = new GameObject[]
+       {
+            Resources.Load<GameObject>("AxeBlock"),
+            Resources.Load<GameObject>("CrossBlock"),
+            Resources.Load<GameObject>("FlippedHammerBlock"),
+            Resources.Load<GameObject>("SmallLBlock"),
+            Resources.Load<GameObject>("SquareBlock"),
+            Resources.Load<GameObject>("StraightBlock"),
+            Resources.Load<GameObject>("UBlock"),
+            Resources.Load<GameObject>("ZBlock"),
+            Resources.Load<GameObject>("ZigZagBlock")
+       };
     }
     private void ButtonOnOnButtonClicked(int buttonNumber)
     {

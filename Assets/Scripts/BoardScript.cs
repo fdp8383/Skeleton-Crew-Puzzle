@@ -15,6 +15,7 @@ public class BoardScript : MonoBehaviour
 
     private BoxCollider2D BoardCollider; //boards collider
 
+    public GameObject[] pieces; //all of the pieces
     private Vector2[,] points; //all of the grid points
 
     public int xSpaces;
@@ -25,20 +26,47 @@ public class BoardScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
         xSpaces = 5;
         ySpaces = 5;
         points = new Vector2[xSpaces, ySpaces];
+=======
+        EventManager.getPosition += NearestPoint;
+        EventManager.boardCheck += Filled;
+>>>>>>> parent of 08b9aea... board spawns in properly
 
         BoardCollider = gameObject.GetComponent<BoxCollider2D>();
 
         //load the grid square
         square = Resources.Load<GameObject>("GridSquare");
 
+        //add all the pieces to the array
+        pieces = new GameObject[]
+        {
+            Resources.Load<GameObject>("AxeBlock"),
+            Resources.Load<GameObject>("CrossBlock"),
+            Resources.Load<GameObject>("FlippedHammerBlock"),
+            Resources.Load<GameObject>("SmallLBlock"),
+            Resources.Load<GameObject>("SquareBlock"),
+            Resources.Load<GameObject>("StraightBlock"),
+            Resources.Load<GameObject>("UBlock"),
+            Resources.Load<GameObject>("ZBlock"),
+            Resources.Load<GameObject>("ZigZagBlock")
+        };
+
         //add the board and pieces to the scene
         level = 1;
+<<<<<<< HEAD
         GenerateBoard(xSpaces, ySpaces);
         EventManager.getPosition += NearestPoint;
         EventManager.boardCheck += Filled;
+=======
+        GenerateBoard(5, 5);
+        for(int i = 0; i < pieces.Length; i++)
+        {
+            Instantiate(pieces[i], new Vector3(i, i, 0), Quaternion.identity);
+        }
+>>>>>>> parent of 08b9aea... board spawns in properly
     }
 
     void Update()
@@ -76,7 +104,6 @@ public class BoardScript : MonoBehaviour
     public bool Filled()
     {
         bool hit = false;
-        bool isFilled = false;
         //go through each space
         for (int i = 0; i < xSpaces; i++)
         {
@@ -87,16 +114,14 @@ public class BoardScript : MonoBehaviour
                 if (!hit)//check if there is an empty space. if so return false
                 {
                     Debug.Log(false);
-                    isFilled = false;
-                    return isFilled;
+                    return false;
                 }
                 hit = false;
             }
         }
         //if the function makes it here without returning false, the board is filled
         Debug.Log(true);
-        isFilled = true;
-        return isFilled;
+        return true;
     }
 
     private void GenerateBoard(int x, int y)

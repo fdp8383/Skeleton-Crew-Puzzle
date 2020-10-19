@@ -22,7 +22,6 @@ public class DragAndDrop : MonoBehaviour
     {
         if (held == true)
         {
-            Debug.Log(message: $"Piece held! ");
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             this.gameObject.transform.localPosition = mousePos;
