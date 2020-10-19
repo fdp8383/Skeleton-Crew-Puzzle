@@ -19,18 +19,29 @@ public class BlockManager : MonoBehaviour
         for (int i = 0; i < 24; i++)
         {
             pieces[i] = Resources.Load<GameObject>("Block" + i.ToString());
-            buttons[i] = Resources.Load<GameObject>("GridSquare");
+            //buttons[i] = Resources.Load<GameObject>("GridSquare");
         }
         for(int i = 0; i < 5; i++)
         {
             
             //Instantiate(buttons[i], new Vector3(-5 + i * 2.5f, -5, 0), Quaternion.identity);
         }
+
+        foreach (var button in GetComponentsInChildren<Block>())
+        {
+            button.OnButtonClicked += ButtonOnOnButtonClicked;
+
+        }
     }
 
     void Start()
     {
-        
+        pieces = new GameObject[24];
+        //add all the pieces to the array
+        for (int i = 0; i < 24; i++)
+        {
+            pieces[i] = Resources.Load<GameObject>("Block" + i.ToString());
+        }
     }
     private void ButtonOnOnButtonClicked(int buttonNumber)
     {

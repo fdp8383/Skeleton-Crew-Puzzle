@@ -39,27 +39,20 @@ public class BoardScript : MonoBehaviour
         //load the grid square
         square = Resources.Load<GameObject>("GridSquare");
 
+        pieces = new GameObject[24];
         //add all the pieces to the array
-        pieces = new GameObject[]
+        for(int i = 0; i < 24; i++)
         {
-            Resources.Load<GameObject>("AxeBlock"),
-            Resources.Load<GameObject>("CrossBlock"),
-            Resources.Load<GameObject>("FlippedHammerBlock"),
-            Resources.Load<GameObject>("SmallLBlock"),
-            Resources.Load<GameObject>("SquareBlock"),
-            Resources.Load<GameObject>("StraightBlock"),
-            Resources.Load<GameObject>("UBlock"),
-            Resources.Load<GameObject>("ZBlock"),
-            Resources.Load<GameObject>("ZigZagBlock")
-        };
+            pieces[i] = Resources.Load<GameObject>("Block" + i.ToString());
+        }
 
         //add the board and pieces to the scene
         level = 1;
         GenerateBoard(xSpaces, ySpaces);
-        for(int i = 0; i < pieces.Length; i++)
-        {
-            Instantiate(pieces[i], new Vector3(i, i, 0), Quaternion.identity);
-        }
+        //for(int i = 0; i < pieces.Length; i++)
+        //{
+        //    Instantiate(pieces[i], new Vector3(i, i, 0), Quaternion.identity);
+        //}
     }
 
     void Update()
