@@ -9,22 +9,22 @@ public class BlockManager : MonoBehaviour
 {
     public GameObject[] pieces; //all of the pieces
     public GameObject[] buttons;
-    private GameObject button;
 
     private void Awake()
     {
-        button = Resources.Load<GameObject>("gridSquare");
+        //add buttons to an array and pieces to a separate array
         pieces = new GameObject[24];
         buttons = new GameObject[24];
 
         for (int i = 0; i < 24; i++)
         {
             pieces[i] = Resources.Load<GameObject>("Block" + i.ToString());
+            buttons[i] = Resources.Load<GameObject>("GridSquare");
         }
-        for(int i = 0; i < 24; i++)
+        for(int i = 0; i < 5; i++)
         {
-            Debug.Log(message: $"Adding button");
-            buttons[i] = button;
+            
+            //Instantiate(buttons[i], new Vector3(-5 + i * 2.5f, -5, 0), Quaternion.identity);
         }
     }
 

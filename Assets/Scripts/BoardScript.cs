@@ -28,17 +28,17 @@ public class BoardScript : MonoBehaviour
         xSpaces = 5;
         ySpaces = 5;
         points = new Vector2[xSpaces, ySpaces];
-        EventManager.getPosition += NearestPoint;
-        EventManager.boardCheck += Filled;
 
         BoardCollider = gameObject.GetComponent<BoxCollider2D>();
 
         //load the grid square
-        square = Resources.Load<GameObject>("gridSquare");
+        square = Resources.Load<GameObject>("GridSquare");
 
         //add the board and pieces to the scene
         level = 1;
         GenerateBoard(xSpaces, ySpaces);
+        EventManager.getPosition += NearestPoint;
+        EventManager.boardCheck += Filled;
     }
 
     void Update()
