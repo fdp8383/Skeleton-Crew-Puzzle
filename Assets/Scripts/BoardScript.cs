@@ -27,10 +27,13 @@ public class BoardScript : MonoBehaviour
     void Start()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         xSpaces = 5;
         ySpaces = 5;
         points = new Vector2[xSpaces, ySpaces];
 =======
+=======
+>>>>>>> parent of 08b9aea... board spawns in properly
         EventManager.getPosition += NearestPoint;
         EventManager.boardCheck += Filled;
 >>>>>>> parent of 08b9aea... board spawns in properly
@@ -54,18 +57,38 @@ public class BoardScript : MonoBehaviour
             Resources.Load<GameObject>("ZigZagBlock")
         };
 
+        //add all the pieces to the array
+        pieces = new GameObject[]
+        {
+            Resources.Load<GameObject>("AxeBlock"),
+            Resources.Load<GameObject>("CrossBlock"),
+            Resources.Load<GameObject>("FlippedHammerBlock"),
+            Resources.Load<GameObject>("SmallLBlock"),
+            Resources.Load<GameObject>("SquareBlock"),
+            Resources.Load<GameObject>("StraightBlock"),
+            Resources.Load<GameObject>("UBlock"),
+            Resources.Load<GameObject>("ZBlock"),
+            Resources.Load<GameObject>("ZigZagBlock")
+        };
+
         //add the board and pieces to the scene
         level = 1;
+<<<<<<< HEAD
 <<<<<<< HEAD
         GenerateBoard(xSpaces, ySpaces);
         EventManager.getPosition += NearestPoint;
         EventManager.boardCheck += Filled;
 =======
+=======
+>>>>>>> parent of 08b9aea... board spawns in properly
         GenerateBoard(5, 5);
         for(int i = 0; i < pieces.Length; i++)
         {
             Instantiate(pieces[i], new Vector3(i, i, 0), Quaternion.identity);
         }
+<<<<<<< HEAD
+>>>>>>> parent of 08b9aea... board spawns in properly
+=======
 >>>>>>> parent of 08b9aea... board spawns in properly
     }
 

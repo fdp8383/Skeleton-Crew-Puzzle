@@ -8,6 +8,7 @@ public class BlockManager : MonoBehaviour
 {
     public GameObject[] pieces; //all of the pieces
 <<<<<<< HEAD
+<<<<<<< HEAD
     public GameObject[] buttons;
 
     private void Awake()
@@ -25,6 +26,14 @@ public class BlockManager : MonoBehaviour
         {
             
             //Instantiate(buttons[i], new Vector3(-5 + i * 2.5f, -5, 0), Quaternion.identity);
+=======
+
+    private void Awake()
+    {
+        foreach(var button in  GetComponentsInChildren<Block>())
+        {
+            button.OnButtonClicked += ButtonOnOnButtonClicked;
+>>>>>>> parent of 08b9aea... board spawns in properly
 =======
 
     private void Awake()
