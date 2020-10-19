@@ -659,4 +659,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27d2797ca5a8bd49bb5b9cf225a64ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  board: {fileID: 0}
   pieces: []

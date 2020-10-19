@@ -3,34 +3,34 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BlockManager : MonoBehaviour
 {
     public GameObject[] pieces; //all of the pieces
+    public GameObject[] buttons;
+    private GameObject button;
 
     private void Awake()
     {
-        foreach(var button in  GetComponentsInChildren<Block>())
+        button = Resources.Load<GameObject>("gridSquare");
+        pieces = new GameObject[24];
+        buttons = new GameObject[24];
+
+        for (int i = 0; i < 24; i++)
         {
-            button.OnButtonClicked += ButtonOnOnButtonClicked;
+            pieces[i] = Resources.Load<GameObject>("Block" + i.ToString());
         }
-        
+        for(int i = 0; i < 24; i++)
+        {
+            Debug.Log(message: $"Adding button");
+            buttons[i] = button;
+        }
     }
 
     void Start()
     {
-        pieces = new GameObject[]
-       {
-            Resources.Load<GameObject>("AxeBlock"),
-            Resources.Load<GameObject>("CrossBlock"),
-            Resources.Load<GameObject>("FlippedHammerBlock"),
-            Resources.Load<GameObject>("SmallLBlock"),
-            Resources.Load<GameObject>("SquareBlock"),
-            Resources.Load<GameObject>("StraightBlock"),
-            Resources.Load<GameObject>("UBlock"),
-            Resources.Load<GameObject>("ZBlock"),
-            Resources.Load<GameObject>("ZigZagBlock")
-       };
+        
     }
     private void ButtonOnOnButtonClicked(int buttonNumber)
     {
