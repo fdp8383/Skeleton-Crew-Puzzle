@@ -6,23 +6,22 @@ using UnityEngine.EventSystems;
 
 public class DragAndDrop : MonoBehaviour
 {
-    private float startPosX;
-    private float startPosY;
     private Vector2 startPos;
+
     private bool held = false;
 
     public bool InBoard { get; set; }
 
     private void Start()
     {
-        startPos = new Vector2();
+        //startPos = new Vector2();
     }
 
     void Update()
     {
         if (held == true)
         {
-            Debug.Log(message: $"Piece held! ");
+            //Debug.Log(message: $"Piece held! ");
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             this.gameObject.transform.localPosition = mousePos;
@@ -44,13 +43,9 @@ public class DragAndDrop : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("click");
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             held = true;
-
-
-            Vector2 v2position = this.transform.localPosition;
-            startPos = mousePos - v2position;
+            startPos = transform.position;
         }
     }
 
@@ -64,12 +59,27 @@ public class DragAndDrop : MonoBehaviour
 
     private void SnapPosition()
     {
-        Vector2 pos = transform.position;
-        pos = EventManager.GetPosition(pos);
+        //where the piece is now
+        Vector2 original = transform.position;
+        //find the nearest point on the grid
+        Vector2 newPos = EventManager.GetPosition(original);
 
-        if (Vector2.Distance(transform.position, pos) < 1)
+        //if the distance between those two points is greater than one, the piece is being placed outside the board and should not be moved
+        if (Vector2.Distance(original, newPos) < 1)
         {
-            transform.position = pos;
+            //if the piece is being placed in the board, snap it to the grid
+            transform.position = newPos;
+
+            //find how many colliders this piece is intersecting. if it is intersecting any, it is in an invalid position and should move back to where it was initially
+            Collider2D[] colliders = new Collider2D[10];
+            ContactFilter2D filter = new ContactFilter2D();
+            int numColliders = GetComponent<Collider2D>().OverlapCollider(filter.NoFilter(), colliders);
+            Debug.Log("this piece is intersecting " + numColliders + " colliders");
+            if (numColliders > 0)
+            {
+                //moving the piece back to where it was at the beginning
+                transform.position = startPos;
+            }
         }
     }
 }

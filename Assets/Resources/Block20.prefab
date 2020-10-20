@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 4145508203399952416}
   - component: {fileID: 992401680875275416}
   m_Layer: 0
-  m_Name: CrossBlock
+  m_Name: Block20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,18 +224,18 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: 0.5}
-      - {x: -0.5, y: 1.5}
-      - {x: 0.5, y: 1.5}
-      - {x: 0.5, y: 0.5}
-      - {x: 1.5, y: 0.5}
-      - {x: 1.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: -1.5}
-      - {x: -0.5, y: -1.5}
-      - {x: -0.5, y: -0.5}
-      - {x: -1.5, y: -0.5}
-      - {x: -1.5, y: 0.5}
+    - - {x: -0.4, y: 0.4}
+      - {x: -0.4, y: 1.4}
+      - {x: 0.4, y: 1.4}
+      - {x: 0.4, y: 0.4}
+      - {x: 1.4, y: 0.4}
+      - {x: 1.4, y: -0.4}
+      - {x: 0.4, y: -0.4}
+      - {x: 0.4, y: -1.4}
+      - {x: -0.4, y: -1.4}
+      - {x: -0.4, y: -0.4}
+      - {x: -1.4, y: -0.4}
+      - {x: -1.4, y: 0.4}
 --- !u!114 &992401680875275416
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 8712177650195699539}
   - component: {fileID: 7881414873251773940}
   m_Layer: 0
-  m_Name: AxeBlock
+  m_Name: Block19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -468,12 +468,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -2.5, y: -0.5}
-      - {x: -2.5, y: 0.5}
-      - {x: 1.5, y: 0.5}
-      - {x: 1.5, y: -1.5}
-      - {x: -0.5, y: -1.5}
-      - {x: -0.5, y: -0.5}
+    - - {x: -2.4, y: -0.4}
+      - {x: -2.4, y: 0.4}
+      - {x: 1.4, y: 0.4}
+      - {x: 1.4, y: -1.4}
+      - {x: -0.4, y: -1.4}
+      - {x: -0.4, y: -0.4}
 --- !u!114 &7881414873251773940
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6012401721070729822}
   - component: {fileID: 2175276086207040879}
   m_Layer: 0
-  m_Name: SquareBlock
+  m_Name: Block24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,7 +141,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1.8, y: 1.8}
   m_EdgeRadius: 0
 --- !u!114 &2175276086207040879
 MonoBehaviour:

@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 2072406921015871350}
   - component: {fileID: -8760262242340439225}
   m_Layer: 0
-  m_Name: FlippedLBlock
+  m_Name: Block22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,12 +141,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.5, y: -0.5}
-      - {x: -1.5, y: 0.5}
-      - {x: 0.5, y: 0.5}
-      - {x: 0.5, y: -1.5}
-      - {x: -0.5, y: -1.5}
-      - {x: -0.5, y: -0.5}
+    - - {x: -1.4, y: -0.4}
+      - {x: -1.4, y: 0.4}
+      - {x: 0.4, y: 0.4}
+      - {x: 0.4, y: -1.4}
+      - {x: -0.4, y: -1.4}
+      - {x: -0.4, y: -0.4}
 --- !u!114 &-8760262242340439225
 MonoBehaviour:
   m_ObjectHideFlags: 0

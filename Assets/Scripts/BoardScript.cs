@@ -10,6 +10,14 @@ public class BoardScript : MonoBehaviour
 
     private GameObject square; //gridsquare
 
+<<<<<<< HEAD
+=======
+    private Transform Boundary; //outer boundary of the grid to keep pieces inside
+
+    public GameObject[] pieces; //all of the pieces
+    public bool[] activePieces;
+
+>>>>>>> 43fa97d3f9c043e757cdbe949231f1158672cf77
     private Vector2[,] points; //all of the grid points
 
     public int xSpaces;
@@ -30,10 +38,20 @@ public class BoardScript : MonoBehaviour
         //board will check if it is filled when you place a piece
         EventManager.boardCheck += Filled;
 
-        xSpaces = 5;
-        ySpaces = 5;
+        Boundary = transform.Find("outside");
+
+        xSpaces = 8;
+        ySpaces = 7;
         points = new Vector2[xSpaces, ySpaces];
 
+<<<<<<< HEAD
+=======
+        //resize the bounding collider with the board
+        Boundary.localScale = new Vector2(xSpaces, ySpaces);
+
+        //add the board and pieces to the scene
+        level = 1;
+>>>>>>> 43fa97d3f9c043e757cdbe949231f1158672cf77
         GenerateBoard(xSpaces, ySpaces);
     }
 
@@ -81,7 +99,6 @@ public class BoardScript : MonoBehaviour
             for (int n = 0; n < ySpaces; n++)
             {
                 hit = Physics2D.Raycast(points[i, n], Vector2.up, 0.1f);
-                Debug.Log("Hit: " + hit);
                 if (!hit)//check if there is an empty space. if so return false
                 {
                     Debug.Log(false);
