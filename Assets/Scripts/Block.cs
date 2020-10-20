@@ -10,7 +10,6 @@ public class Block : MonoBehaviour
     [SerializeField] private TMP_Text _text;
 
     public event Action<int> OnButtonClicked;
-    public GameObject[] pieces; //all of the pieces
 
     private KeyCode _keyCode; //used for keyboard input, I HAVE NOT IMPLEMENTED THIS, but I can should we want this functionality
     private int _keyNumber; //the current NUM of the hotbar
