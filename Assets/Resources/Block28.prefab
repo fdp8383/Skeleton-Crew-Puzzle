@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6786831230886550355}
   - component: {fileID: 4202531164558683663}
   m_Layer: 0
-  m_Name: ZigZagBlock
+  m_Name: Block28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,16 +143,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.5, y: 0.5}
-      - {x: -1.5, y: 1.5}
-      - {x: 0.5, y: 1.5}
-      - {x: 0.5, y: 0.5}
-      - {x: 1.5, y: 0.5}
-      - {x: 1.5, y: -1.5}
-      - {x: 0.5, y: -1.5}
-      - {x: 0.5, y: -0.5}
-      - {x: -0.5, y: -0.5}
-      - {x: -0.5, y: 0.5}
+    - - {x: -1.4, y: 0.6}
+      - {x: -1.4, y: 1.4}
+      - {x: 0.4, y: 1.4}
+      - {x: 0.4, y: 0.4}
+      - {x: 1.4, y: 0.4}
+      - {x: 1.4, y: -1.4}
+      - {x: 0.6, y: -1.4}
+      - {x: 0.6, y: -0.4}
+      - {x: -0.4, y: -0.4}
+      - {x: -0.4, y: 0.6}
 --- !u!114 &4202531164558683663
 MonoBehaviour:
   m_ObjectHideFlags: 0
