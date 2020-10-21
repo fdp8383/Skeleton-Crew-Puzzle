@@ -5,10 +5,13 @@ using UnityEngine;
 public class PieceManager : MonoBehaviour
 {
     public GameObject[] pieces;
+    public GameObject board;
     public int level;
+    public BoardScript boardScript;
     void Start()
     {
-        GameObject board = GameObject.Find("board");
+        board = GameObject.Find("board");
+        boardScript = board.GetComponent<BoardScript>();
 
         level = 1;
 
@@ -26,6 +29,7 @@ public class PieceManager : MonoBehaviour
 
     public void SpawnPieces()
     {
+        boardScript.hasSpawned = true;
         switch (level)
         {
             case 1:

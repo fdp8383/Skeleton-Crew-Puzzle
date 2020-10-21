@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BoardScript : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class BoardScript : MonoBehaviour
 
     public int xSpaces;
     public int ySpaces;
+
+    public bool hasSpawned;
+
+    public GameObject spawnButton;
 
     private void Awake()
     {
@@ -44,10 +49,15 @@ public class BoardScript : MonoBehaviour
         //resize the bounding collider with the board
         Boundary.localScale = new Vector2(xSpaces, ySpaces);
         GenerateBoard(xSpaces, ySpaces);
+        hasSpawned = false;
+
+        spawnButton = GameObject.Find("SpawnButton");
     }
 
     void Update()
     {
+        // This is the 'kill state'
+        // If the board is filled and the mouse is up, stop the game
         if (Filled() && Input.GetMouseButtonUp(0))
         {
 
@@ -58,6 +68,15 @@ public class BoardScript : MonoBehaviour
 #else
          Application.Quit();
 #endif
+        }
+
+        // This runs if the game is still being played
+        else
+        {
+            if (hasSpawned && spawnButton.GetComponent<Button>().interactable)
+            {
+                spawnButton.GetComponent<Button>().interactable = false;
+            }
         }
     }
 
