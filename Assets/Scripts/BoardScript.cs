@@ -24,6 +24,7 @@ public class BoardScript : MonoBehaviour
     public bool hasSpawned;
 
     public GameObject spawnButton;
+    public GameObject despawnButton;
 
     private void Awake()
     {
@@ -52,6 +53,7 @@ public class BoardScript : MonoBehaviour
         hasSpawned = false;
 
         spawnButton = GameObject.Find("SpawnButton");
+        despawnButton = GameObject.Find("DespawnButton");
     }
 
     void Update()
@@ -76,6 +78,12 @@ public class BoardScript : MonoBehaviour
             if (hasSpawned && spawnButton.GetComponent<Button>().interactable)
             {
                 spawnButton.GetComponent<Button>().interactable = false;
+                despawnButton.GetComponent<Button>().interactable = true;
+            }
+            else if (!hasSpawned && !spawnButton.GetComponent<Button>().interactable)
+            {
+                spawnButton.GetComponent<Button>().interactable = true;
+                despawnButton.GetComponent<Button>().interactable = false;
             }
         }
     }

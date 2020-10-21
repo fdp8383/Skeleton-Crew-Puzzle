@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ButtonManager : MonoBehaviour
 {
     public Button spawnButton;
+    public Button despawnButton;
     // Start is called before the first frame update
     void Start()
     {
