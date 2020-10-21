@@ -9,6 +9,7 @@ public class ButtonManager : MonoBehaviour
 {
     public Button spawnButton;
     public Button despawnButton;
+    public Button nextLevelButton;
     // Start is called before the first frame update
     void Start()
     {

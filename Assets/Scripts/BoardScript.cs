@@ -11,12 +11,12 @@ public class BoardScript : MonoBehaviour
 
     private GameObject square; //gridsquare
 
-    private Transform Boundary; //outer boundary of the grid to keep pieces inside
+    public Transform Boundary; //outer boundary of the grid to keep pieces inside
 
     public GameObject[] pieces; //all of the pieces
     public bool[] activePieces;
 
-    private Vector2[,] points; //all of the grid points
+    public Vector2[,] points; //all of the grid points
 
     public int xSpaces;
     public int ySpaces;
@@ -25,6 +25,7 @@ public class BoardScript : MonoBehaviour
 
     public GameObject spawnButton;
     public GameObject despawnButton;
+    public GameObject nextLevelButton;
 
     private void Awake()
     {
@@ -43,17 +44,11 @@ public class BoardScript : MonoBehaviour
 
         Boundary = transform.Find("outside");
 
-        xSpaces = 5;
-        ySpaces = 5;
-        points = new Vector2[xSpaces, ySpaces];
-
-        //resize the bounding collider with the board
-        Boundary.localScale = new Vector2(xSpaces, ySpaces);
-        GenerateBoard(xSpaces, ySpaces);
         hasSpawned = false;
 
         spawnButton = GameObject.Find("SpawnButton");
         despawnButton = GameObject.Find("DespawnButton");
+        nextLevelButton = GameObject.Find("NextLevelButton");
     }
 
     void Update()
@@ -62,14 +57,7 @@ public class BoardScript : MonoBehaviour
         // If the board is filled and the mouse is up, stop the game
         if (Filled() && Input.GetMouseButtonUp(0))
         {
-
-#if UNITY_EDITOR
-            // Application.Quit() does not work in the editor so
-            // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-         Application.Quit();
-#endif
+            nextLevelButton.GetComponent<Button>().interactable = true;
         }
 
         // This runs if the game is still being played
@@ -134,7 +122,7 @@ public class BoardScript : MonoBehaviour
         return isFilled;
     }
 
-    private void GenerateBoard(int x, int y)
+    public void GenerateBoard(int x, int y)
     {
         xSpaces = x;
         ySpaces = y;
