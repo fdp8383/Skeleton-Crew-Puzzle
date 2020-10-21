@@ -21,7 +21,7 @@ public class BoardScript : MonoBehaviour
     public int xSpaces;
     public int ySpaces;
 
-    public bool hasSpawned;
+    public bool hasSpawned; //lets us know if we allow the player to spawn in more pieces/despawn existing pieces
 
     public GameObject spawnButton;
     public GameObject despawnButton;

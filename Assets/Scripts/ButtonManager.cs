@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// I feel like this class is obsolete but I don't want to mess with anything
+// right now as it's currently working
 public class ButtonManager : MonoBehaviour
 {
     public Button spawnButton;

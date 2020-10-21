@@ -6,10 +6,10 @@ public class PieceManager : MonoBehaviour
 {
     public GameObject[] pieces;
     public GameObject board;
-    public int level;
+    public List<GameObject> activePieces;
     public BoardScript boardScript;
 
-    public List<GameObject> activePieces;
+    public int level;
     void Start()
     {
         board = GameObject.Find("board");
@@ -18,6 +18,7 @@ public class PieceManager : MonoBehaviour
         level = 1;
 
         pieces = new GameObject[29];
+
         //add all the pieces to the array
         for (int i = 0; i < pieces.Length; i++)
         {
@@ -31,11 +32,15 @@ public class PieceManager : MonoBehaviour
     {
     }
 
+    // Spawns in the pieces
     public void SpawnPieces()
     {
         boardScript.hasSpawned = true;
         switch (level)
         {
+            // This is super hard coded but it's really just for testing purposes
+            // I plan on having an array for each level detailing which pieces to spawn
+            // So this should be gone soon(TM)
             case 1:
                 GameObject p0 = Instantiate<GameObject>(pieces[0], new Vector3(-8, 4, 0), Quaternion.identity);
                 GameObject p1 = Instantiate<GameObject>(pieces[3], new Vector3(-8, -2, 0), Quaternion.identity);
@@ -54,6 +59,7 @@ public class PieceManager : MonoBehaviour
         }
     }
 
+    // Goes through all of the despawned pieces and destroys them
     public void DespawnPieces()
     {
         boardScript.hasSpawned = false;
