@@ -32,6 +32,7 @@ public class PieceManager : MonoBehaviour
                 Instantiate<GameObject>(pieces[0], new Vector3(-8, 4, 0), Quaternion.identity).transform.SetParent(transform);
                 Instantiate<GameObject>(pieces[3], new Vector3(-8, -2, 0), Quaternion.identity).transform.SetParent(transform);
                 Instantiate<GameObject>(pieces[4], new Vector3(-3.5f, 4.5f, 0), Quaternion.identity).transform.SetParent(transform);
+                Instantiate<GameObject>(pieces[6], new Vector3(5, 5, 0), Quaternion.identity).transform.SetParent(transform);
                 Instantiate<GameObject>(pieces[7], new Vector3(2, 4.5f, 0), Quaternion.identity).transform.SetParent(transform);
                 break;
             default:
