@@ -24,7 +24,12 @@ public class DragAndDrop : MonoBehaviour
             //Debug.Log(message: $"Piece held! ");
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            this.gameObject.transform.localPosition = mousePos;
+            this.gameObject.transform.localPosition = new Vector3(mousePos.x, mousePos.y, -1);
+        }
+
+        if (held == false)
+        {
+            this.gameObject.transform.localPosition = new Vector3(this.gameObject.transform.localPosition.x, this.gameObject.transform.localPosition.y, 0);
         }
 
         if (held && Input.GetKeyDown("q"))
