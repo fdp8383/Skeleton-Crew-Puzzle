@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PieceManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class PieceManager : MonoBehaviour
         board = GameObject.Find("board");
         boardScript = board.GetComponent<BoardScript>();
 
-        level = 1;
+        level = 0;
 
         pieces = new GameObject[29];
 
@@ -38,20 +39,29 @@ public class PieceManager : MonoBehaviour
         boardScript.hasSpawned = true;
         switch (level)
         {
-            // This is super hard coded but it's really just for testing purposes
-            // I plan on having an array for each level detailing which pieces to spawn
-            // So this should be gone soon(TM)
+            // tutorial level, only 1 piece
+            case 0:
+                boardScript.xSpaces = 2;
+                boardScript.ySpaces = 2;
+                boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+                boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+                boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
+                activePieces.Add(Instantiate<GameObject>(pieces[24], new Vector3(-8, 4, 0), Quaternion.identity));
+                break;
+            // first 'real' level
             case 1:
-                GameObject p0 = Instantiate<GameObject>(pieces[0], new Vector3(-8, 4, 0), Quaternion.identity);
-                GameObject p1 = Instantiate<GameObject>(pieces[3], new Vector3(-8, -2, 0), Quaternion.identity);
-                GameObject p2 = Instantiate<GameObject>(pieces[4], new Vector3(-3.5f, 4.5f, 0), Quaternion.identity);
-                GameObject p3 = Instantiate<GameObject>(pieces[6], new Vector3(5, 5, 0), Quaternion.identity);
-                GameObject p4 = Instantiate<GameObject>(pieces[7], new Vector3(2, 4.5f, 0), Quaternion.identity);
-                activePieces.Add(p0);
-                activePieces.Add(p1);
-                activePieces.Add(p2);
-                activePieces.Add(p3);
-                activePieces.Add(p4);
+                boardScript.xSpaces = 5;
+                boardScript.ySpaces = 5;
+                boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+                boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+                //resize the bounding collider with the board
+                boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
+
+                activePieces.Add(Instantiate<GameObject>(pieces[0], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[3], new Vector3(-8, -2, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[4], new Vector3(-3.5f, 4.5f, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[6], new Vector3(5, 5, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[7], new Vector3(2, 4.5f, 0), Quaternion.identity));
                 break;
             default:
                 Debug.Log("Something went wrong. The current level is #" + level);
@@ -67,5 +77,13 @@ public class PieceManager : MonoBehaviour
         {
             Destroy(piece);
         }
+    }
+
+    public void NextLevel()
+    {
+        DespawnPieces();
+        level++;
+        SpawnPieces();
+        boardScript.nextLevelButton.GetComponent<Button>().interactable = false;
     }
 }
