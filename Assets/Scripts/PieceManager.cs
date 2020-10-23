@@ -16,9 +16,9 @@ public class PieceManager : MonoBehaviour
         board = GameObject.Find("board");
         boardScript = board.GetComponent<BoardScript>();
 
-        level = 2;
+        level = 3;
 
-        pieces = new GameObject[29];
+        pieces = new GameObject[28];
 
         //add all the pieces to the array
         for (int i = 0; i < pieces.Length; i++)
@@ -77,6 +77,25 @@ public class PieceManager : MonoBehaviour
                 activePieces.Add(Instantiate<GameObject>(pieces[6], new Vector3(-8, -2, 0), Quaternion.identity));
                 activePieces.Add(Instantiate<GameObject>(pieces[12], new Vector3(-3.5f, 4.5f, 0), Quaternion.identity));
                 break;
+            // level 3
+            case 3:
+                boardScript.xSpaces = 5;
+                boardScript.ySpaces = 7;
+                boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+                boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+                boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
+
+                activePieces.Add(Instantiate<GameObject>(pieces[15], new Vector3(2, 4.5f, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[16], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[16], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[17], new Vector3(-8, -2, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[20], new Vector3(-3.5f, 4.5f, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(8, 5, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(8, 5, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(8, 5, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[25], new Vector3(8, -2, 0), Quaternion.identity));
+                break;
+
             default:
                 Debug.Log("Something went wrong. The current level is #" + level);
                 break;
