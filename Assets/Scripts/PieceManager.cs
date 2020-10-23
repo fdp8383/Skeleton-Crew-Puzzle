@@ -16,7 +16,7 @@ public class PieceManager : MonoBehaviour
         board = GameObject.Find("board");
         boardScript = board.GetComponent<BoardScript>();
 
-        level = 3;
+        level = 4;
 
         pieces = new GameObject[28];
 
@@ -95,7 +95,23 @@ public class PieceManager : MonoBehaviour
                 activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(8, 5, 0), Quaternion.identity));
                 activePieces.Add(Instantiate<GameObject>(pieces[25], new Vector3(8, -2, 0), Quaternion.identity));
                 break;
+            // level 4
+            case 4:
+                boardScript.xSpaces = 5;
+                boardScript.ySpaces = 7;
+                boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+                boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+                boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
 
+                activePieces.Add(Instantiate<GameObject>(pieces[3], new Vector3(2.5f, 6, 0), Quaternion.Euler(0, 0, 90)));
+                activePieces.Add(Instantiate<GameObject>(pieces[4], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[12], new Vector3(-8, -2, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[15], new Vector3(-3, 5, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[16], new Vector3(8, 5, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(8.5f, -3, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[24], new Vector3(4, -1, 0), Quaternion.Euler(0, 0, 90)));
+                activePieces.Add(Instantiate<GameObject>(pieces[27], new Vector3(8, 1, 0), Quaternion.identity));
+                break;
             default:
                 Debug.Log("Something went wrong. The current level is #" + level);
                 break;

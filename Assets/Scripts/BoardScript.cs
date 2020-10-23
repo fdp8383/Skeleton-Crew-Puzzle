@@ -13,9 +13,6 @@ public class BoardScript : MonoBehaviour
 
     public Transform Boundary; //outer boundary of the grid to keep pieces inside
 
-    public GameObject[] pieces; //all of the pieces
-    public bool[] activePieces;
-
     public Vector2[,] points; //all of the grid points
 
     public int xSpaces;
