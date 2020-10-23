@@ -24,6 +24,8 @@ public class BoardScript : MonoBehaviour
     public GameObject despawnButton;
     public GameObject nextLevelButton;
 
+    public List<GameObject> activeBoard;
+
     private void Awake()
     {
         //load the grid square
@@ -46,6 +48,8 @@ public class BoardScript : MonoBehaviour
         spawnButton = GameObject.Find("SpawnButton");
         despawnButton = GameObject.Find("DespawnButton");
         nextLevelButton = GameObject.Find("NextLevelButton");
+
+        activeBoard = new List<GameObject>();
     }
 
     void Update()
@@ -131,7 +135,7 @@ public class BoardScript : MonoBehaviour
             for (int n = 0; n < ySpaces; n++)
             {
                 points[i, n] = new Vector2(i - (xSpaces - 1) / 2f, n - (ySpaces - 1) / 2f); //create a point
-                Instantiate(square, new Vector3(points[i, n].x, points[i, n].y, 0), Quaternion.identity).transform.parent = transform; //draw a grid square around the point and set the parent to the board
+                activeBoard.Add(Instantiate(square, new Vector3(points[i, n].x, points[i, n].y, 0), Quaternion.identity)); //draw a grid square around the point and set the parent to the board
             }
         }
     }

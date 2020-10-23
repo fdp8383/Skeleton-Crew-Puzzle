@@ -16,7 +16,7 @@ public class PieceManager : MonoBehaviour
         board = GameObject.Find("board");
         boardScript = board.GetComponent<BoardScript>();
 
-        level = 4;
+        level = 0;
 
         pieces = new GameObject[28];
 
@@ -46,7 +46,7 @@ public class PieceManager : MonoBehaviour
                 boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
                 boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
                 boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
-                activePieces.Add(Instantiate<GameObject>(pieces[24], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[23], new Vector3(-8, 4, 0), Quaternion.identity));
                 break;
             // first 'real' level
             // level 1
@@ -125,6 +125,10 @@ public class PieceManager : MonoBehaviour
         foreach(GameObject piece in activePieces)
         {
             Destroy(piece);
+        }
+        foreach(GameObject square in boardScript.activeBoard)
+        {
+            Destroy(square);
         }
     }
 
