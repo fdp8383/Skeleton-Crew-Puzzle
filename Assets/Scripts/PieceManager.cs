@@ -16,7 +16,7 @@ public class PieceManager : MonoBehaviour
         board = GameObject.Find("board");
         boardScript = board.GetComponent<BoardScript>();
 
-        level = 0;
+        level = 2;
 
         pieces = new GameObject[29];
 
@@ -49,6 +49,7 @@ public class PieceManager : MonoBehaviour
                 activePieces.Add(Instantiate<GameObject>(pieces[24], new Vector3(-8, 4, 0), Quaternion.identity));
                 break;
             // first 'real' level
+            // level 1
             case 1:
                 boardScript.xSpaces = 5;
                 boardScript.ySpaces = 5;
@@ -62,6 +63,19 @@ public class PieceManager : MonoBehaviour
                 activePieces.Add(Instantiate<GameObject>(pieces[4], new Vector3(-3.5f, 4.5f, 0), Quaternion.identity));
                 activePieces.Add(Instantiate<GameObject>(pieces[6], new Vector3(5, 5, 0), Quaternion.identity));
                 activePieces.Add(Instantiate<GameObject>(pieces[7], new Vector3(2, 4.5f, 0), Quaternion.identity));
+                break;
+            // level 2
+            case 2:
+                boardScript.xSpaces = 5;
+                boardScript.ySpaces = 4;
+                boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+                boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+                boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
+
+                activePieces.Add(Instantiate<GameObject>(pieces[4], new Vector3(2, 4.5f, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[5], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[6], new Vector3(-8, -2, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[12], new Vector3(-3.5f, 4.5f, 0), Quaternion.identity));
                 break;
             default:
                 Debug.Log("Something went wrong. The current level is #" + level);
