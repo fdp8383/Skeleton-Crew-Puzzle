@@ -16,7 +16,7 @@ public class PieceManager : MonoBehaviour
         board = GameObject.Find("board");
         boardScript = board.GetComponent<BoardScript>();
 
-        level = 4;
+        level = 0;
 
         pieces = new GameObject[28];
 
@@ -39,16 +39,16 @@ public class PieceManager : MonoBehaviour
         boardScript.hasSpawned = true;
         switch (level)
         {
-            // tutorial level, only 1 piece
+            // tutorial level, only 1 piece 1x1
             case 0:
                 boardScript.xSpaces = 2;
                 boardScript.ySpaces = 2;
                 boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
                 boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
                 boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
-                activePieces.Add(Instantiate<GameObject>(pieces[24], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[23], new Vector3(-8, 4, 0), Quaternion.identity));
                 break;
-            // first 'real' level
+            // first 'real' level 2x2
             // level 1
             case 1:
                 boardScript.xSpaces = 5;

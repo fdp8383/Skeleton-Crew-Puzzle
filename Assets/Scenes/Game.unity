@@ -708,6 +708,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8531052234648496842, guid: 7772b958616993c499c2c3dba574a5de, type: 3}
+      propertyPath: level
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3038118012573326669, guid: 7772b958616993c499c2c3dba574a5de, type: 3}
       propertyPath: m_Name
       value: PieceManager
