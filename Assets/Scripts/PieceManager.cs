@@ -126,6 +126,10 @@ public class PieceManager : MonoBehaviour
         {
             Destroy(piece);
         }
+        foreach(GameObject square in boardScript.activeBoard)
+        {
+            Destroy(square);
+        }
     }
 
     public void NextLevel()
