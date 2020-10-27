@@ -8,8 +8,9 @@ public class MainMenu : MonoBehaviour
 {
     public bool isStart;
     public bool isQuit;
+	public MenuManager menuManager;
 	TextMeshPro obj;
-
+	
 	void Start()
 	{
 		obj = GetComponent<TextMeshPro>();
@@ -24,7 +25,9 @@ public class MainMenu : MonoBehaviour
 		}
 		if (isStart)
 		{
-			SceneManager.LoadScene(1);
+			//menuManager.menuEnum = MenuEnum.GameMenu;
+			menuManager.ChangeScene(1);
+			//SceneManager.LoadScene(1);
 			obj.color = Color.cyan;
 		}
 	}
