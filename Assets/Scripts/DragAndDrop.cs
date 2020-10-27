@@ -32,12 +32,12 @@ public class DragAndDrop : MonoBehaviour
             this.gameObject.transform.localPosition = new Vector3(this.gameObject.transform.localPosition.x, this.gameObject.transform.localPosition.y, 0);
         }
 
-        if (held && Input.GetKeyDown("q"))
+        if (held && Input.GetKeyDown("e"))
         {
             transform.Rotate(0, 0, -90);
         }
 
-        if (held && Input.GetKeyDown("e"))
+        if (held && Input.GetKeyDown("q"))
         {
             transform.Rotate(0, 0, 90);
         }
