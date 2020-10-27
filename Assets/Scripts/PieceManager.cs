@@ -16,9 +16,9 @@ public class PieceManager : MonoBehaviour
         board = GameObject.Find("board");
         boardScript = board.GetComponent<BoardScript>();
 
-        level = 0;
+        level = 9;
 
-        pieces = new GameObject[28];
+        pieces = new GameObject[29];
 
         //add all the pieces to the array
         for (int i = 0; i < pieces.Length; i++)
@@ -39,7 +39,7 @@ public class PieceManager : MonoBehaviour
         boardScript.hasSpawned = true;
         switch (level)
         {
-            // tutorial level, only 1 piece 1x1
+            // tutorial level, only 1 piece 2x2
             case 0:
                 boardScript.xSpaces = 2;
                 boardScript.ySpaces = 2;
@@ -48,70 +48,174 @@ public class PieceManager : MonoBehaviour
                 boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
                 activePieces.Add(Instantiate<GameObject>(pieces[23], new Vector3(-8, 4, 0), Quaternion.identity));
                 break;
-            // first 'real' level 2x2
+
+            // 2 pieces
             // level 1
             case 1:
-                boardScript.xSpaces = 5;
-                boardScript.ySpaces = 5;
+                boardScript.xSpaces = 4;
+                boardScript.ySpaces = 2;
                 boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
                 boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
-                //resize the bounding collider with the board
                 boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
-
-                activePieces.Add(Instantiate<GameObject>(pieces[0], new Vector3(-8, 4, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[3], new Vector3(-8, -2, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[4], new Vector3(-3.5f, 4.5f, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[6], new Vector3(5, 5, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[7], new Vector3(2, 4.5f, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[23], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[23], new Vector3(-8, 4, 0), Quaternion.identity));
                 break;
+
+            // 3x3
             // level 2
             case 2:
-                boardScript.xSpaces = 5;
-                boardScript.ySpaces = 4;
+                boardScript.xSpaces = 3;
+                boardScript.ySpaces = 3;
                 boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
                 boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
                 boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
-
-                activePieces.Add(Instantiate<GameObject>(pieces[4], new Vector3(2, 4.5f, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[5], new Vector3(-8, 4, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[6], new Vector3(-8, -2, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[12], new Vector3(-3.5f, 4.5f, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[10], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[23], new Vector3(-8, -2, 0), Quaternion.identity));
                 break;
-            // level 3
+
+            //level 3
             case 3:
-                boardScript.xSpaces = 5;
-                boardScript.ySpaces = 7;
+                boardScript.xSpaces = 3;
+                boardScript.ySpaces = 3;
                 boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
                 boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
                 boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
-
-                activePieces.Add(Instantiate<GameObject>(pieces[15], new Vector3(2, 4.5f, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[16], new Vector3(-8, 4, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[16], new Vector3(-8, 4, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[17], new Vector3(-8, -2, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[20], new Vector3(-3.5f, 4.5f, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(8, 5, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(8, 5, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(8, 5, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[25], new Vector3(8, -2, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[17], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[25], new Vector3(-8, -2, 0), Quaternion.identity));
                 break;
+
             // level 4
             case 4:
-                boardScript.xSpaces = 5;
-                boardScript.ySpaces = 7;
+                boardScript.xSpaces = 3;
+                boardScript.ySpaces = 3;
                 boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
                 boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
                 boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
-
-                activePieces.Add(Instantiate<GameObject>(pieces[3], new Vector3(2.5f, 6, 0), Quaternion.Euler(0, 0, 90)));
-                activePieces.Add(Instantiate<GameObject>(pieces[4], new Vector3(-8, 4, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[12], new Vector3(-8, -2, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[15], new Vector3(-3, 5, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[16], new Vector3(8, 5, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(8.5f, -3, 0), Quaternion.identity));
-                activePieces.Add(Instantiate<GameObject>(pieces[24], new Vector3(4, -1, 0), Quaternion.Euler(0, 0, 90)));
-                activePieces.Add(Instantiate<GameObject>(pieces[27], new Vector3(8, 1, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[5], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[16], new Vector3(-8, -2, 0), Quaternion.identity));
                 break;
+
+            // level 5
+            case 5:
+                boardScript.xSpaces = 4;
+                boardScript.ySpaces = 3;
+                boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+                boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+                boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
+                activePieces.Add(Instantiate<GameObject>(pieces[23], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[23], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[24], new Vector3(-8, -2, 0), Quaternion.identity));
+                break;
+
+            // level 6
+            case 6:
+                boardScript.xSpaces = 4;
+                boardScript.ySpaces = 3;
+                boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+                boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+                boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
+                activePieces.Add(Instantiate<GameObject>(pieces[15], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[15], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[26], new Vector3(-8, -2, 0), Quaternion.identity));
+                break;
+
+            // level 7
+            case 7:
+                boardScript.xSpaces = 4;
+                boardScript.ySpaces = 3;
+                boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+                boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+                boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
+                activePieces.Add(Instantiate<GameObject>(pieces[16], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(-8, -2, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[27], new Vector3(5, 5, 0), Quaternion.identity));
+                break;
+
+            // level 8
+            case 8:
+                boardScript.xSpaces = 4;
+                boardScript.ySpaces = 3;
+                boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+                boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+                boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
+                activePieces.Add(Instantiate<GameObject>(pieces[18], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(-8, -2, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[25], new Vector3(5, 5, 0), Quaternion.identity));
+                break;
+
+            // level 9
+            case 9:
+                boardScript.xSpaces = 4;
+                boardScript.ySpaces = 3;
+                boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+                boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+                boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
+                activePieces.Add(Instantiate<GameObject>(pieces[6], new Vector3(-8, 4, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[15], new Vector3(-8, -2, 0), Quaternion.identity));
+                activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(5, 5, 0), Quaternion.identity));
+                break;
+            //case 1:
+            //    boardScript.xSpaces = 5;
+            //    boardScript.ySpaces = 5;
+            //    boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+            //    boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+            //    //resize the bounding collider with the board
+            //    boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
+
+            //    activePieces.Add(Instantiate<GameObject>(pieces[0], new Vector3(-8, 4, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[3], new Vector3(-8, -2, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[4], new Vector3(-3.5f, 4.5f, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[6], new Vector3(5, 5, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[7], new Vector3(2, 4.5f, 0), Quaternion.identity));
+            //    break;
+            //// level 2
+            //case 2:
+            //    boardScript.xSpaces = 5;
+            //    boardScript.ySpaces = 4;
+            //    boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+            //    boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+            //    boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
+
+            //    activePieces.Add(Instantiate<GameObject>(pieces[4], new Vector3(2, 4.5f, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[5], new Vector3(-8, 4, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[6], new Vector3(-8, -2, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[12], new Vector3(-3.5f, 4.5f, 0), Quaternion.identity));
+            //    break;
+            //// level 3
+            //case 3:
+            //    boardScript.xSpaces = 5;
+            //    boardScript.ySpaces = 7;
+            //    boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+            //    boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+            //    boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
+
+            //    activePieces.Add(Instantiate<GameObject>(pieces[15], new Vector3(2, 4.5f, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[16], new Vector3(-8, 4, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[16], new Vector3(-8, 4, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[17], new Vector3(-8, -2, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[20], new Vector3(-3.5f, 4.5f, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(8, 5, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(8, 5, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(8, 5, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[25], new Vector3(8, -2, 0), Quaternion.identity));
+            //    break;
+            //// level 4
+            //case 4:
+            //    boardScript.xSpaces = 5;
+            //    boardScript.ySpaces = 7;
+            //    boardScript.points = new Vector2[boardScript.xSpaces, boardScript.ySpaces];
+            //    boardScript.GenerateBoard(boardScript.xSpaces, boardScript.ySpaces);
+            //    boardScript.Boundary.localScale = new Vector2(boardScript.xSpaces, boardScript.ySpaces);
+
+            //    activePieces.Add(Instantiate<GameObject>(pieces[3], new Vector3(2.5f, 6, 0), Quaternion.Euler(0, 0, 90)));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[4], new Vector3(-8, 4, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[12], new Vector3(-8, -2, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[15], new Vector3(-3, 5, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[16], new Vector3(8, 5, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[22], new Vector3(8.5f, -3, 0), Quaternion.identity));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[24], new Vector3(4, -1, 0), Quaternion.Euler(0, 0, 90)));
+            //    activePieces.Add(Instantiate<GameObject>(pieces[27], new Vector3(8, 1, 0), Quaternion.identity));
+            //    break;
             default:
                 Debug.Log("Something went wrong. The current level is #" + level);
                 break;

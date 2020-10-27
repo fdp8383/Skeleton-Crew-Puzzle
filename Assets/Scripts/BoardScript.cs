@@ -26,6 +26,8 @@ public class BoardScript : MonoBehaviour
 
     public List<GameObject> activeBoard;
 
+    public bool isFilled = false;
+
     private void Awake()
     {
         //load the grid square
@@ -54,10 +56,15 @@ public class BoardScript : MonoBehaviour
 
     void Update()
     {
+        if (Filled())
+        {
+            Debug.Log("filled");
+        }
         // This is the 'kill state'
         // If the board is filled and the mouse is up, stop the game
         if (Filled() && Input.GetMouseButtonUp(0))
         {
+            Debug.Log("level complete");
             nextLevelButton.GetComponent<Button>().interactable = true;
         }
 
@@ -102,8 +109,12 @@ public class BoardScript : MonoBehaviour
     //check if the board is filled
     public bool Filled()
     {
+        if (!hasSpawned)
+        {
+            return false;
+        }
         bool hit = false;
-        bool isFilled = false;
+        isFilled = false;
         //go through each space
         for (int i = 0; i < xSpaces; i++)
         {

@@ -66,8 +66,11 @@ public class DragAndDrop : MonoBehaviour
     {
         //where the piece is now
         Vector2 original = transform.position;
+        Debug.Log("original: " + original.ToString());
         //find the nearest point on the grid
         Vector2 newPos = EventManager.GetPosition(original);
+        Debug.Log("newPos: " + newPos.ToString());
+        Debug.Log(Vector2.Distance(original, newPos).ToString());
 
         //if the distance between those two points is greater than one, the piece is being placed outside the board and should not be moved
         if (Vector2.Distance(original, newPos) < 1)
