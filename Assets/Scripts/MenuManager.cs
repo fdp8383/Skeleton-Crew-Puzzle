@@ -9,7 +9,7 @@ public enum MenuEnum
     GameMenu = 1,
     TutorialMenu = 2,
     CreditsMenu = 3,
-    PauseMenu = 4
+    PauseMenu = 4,
 }
 public class MenuManager : MonoBehaviour
 {
