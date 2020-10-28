@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,7 @@ public class BoardScript : MonoBehaviour
     public List<GameObject> activeBoard;
 
     public bool isFilled = false;
+
 
     private void Awake()
     {

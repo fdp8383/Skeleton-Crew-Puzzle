@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
 	public bool isBack;
 	public MenuManager menuManager;
 	TextMeshPro obj;
-	
+
 	void Start()
 	{
 		obj = GetComponent<TextMeshPro>();

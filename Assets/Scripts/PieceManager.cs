@@ -9,6 +9,8 @@ public class PieceManager : MonoBehaviour
     public GameObject board;
     public List<GameObject> activePieces;
     public BoardScript boardScript;
+    public GameObject menu;
+    public MenuManager menuManager;
 
     public int level;
     void Start()
@@ -16,7 +18,10 @@ public class PieceManager : MonoBehaviour
         board = GameObject.Find("board");
         boardScript = board.GetComponent<BoardScript>();
 
-        level = 0;
+        menu = GameObject.Find("SceneManager");
+        menuManager = menu.GetComponent<MenuManager>();
+
+        level = 29;
 
         pieces = new GameObject[29];
 
@@ -512,6 +517,10 @@ public class PieceManager : MonoBehaviour
     {
         DespawnPieces();
         level++;
+        if(level == 30)
+        {
+            menuManager.ChangeScene(5);
+        }
         SpawnPieces();
         boardScript.nextLevelButton.GetComponent<Button>().interactable = false;
     }
